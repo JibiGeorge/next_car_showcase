@@ -1,4 +1,6 @@
+import NavBar from '@/components/NavBar'
 import './globals.css'
+import Footer from '@/components/Footer'
 
 export const metadata = {
   title: 'Car-ShowCase',
@@ -12,7 +14,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className='relative'>
+        <NavBar />
+        {children}
+        <Footer />
+      </body>
     </html>
   )
 }
