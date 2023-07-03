@@ -1,25 +1,17 @@
 "use client";
 
 import { CustomFilterprops } from '@/types';
-import { updateSearchparams } from '@/utils';
 import { Listbox, Transition } from '@headlessui/react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import React, { Fragment, useState } from 'react'
 
-const CustomFilter = ({ title, options }: CustomFilterprops) => {
+const CustomFilter = ({ title, options, setFilter }: CustomFilterprops) => {
 
   const [selected, setSelected] = useState(options[0]);
-  const router = useRouter();
 
-  const handleUpdateParams = (e: {title: string, value: string}) => {
-    const newPathName = updateSearchparams(title,e.value.toLowerCase());
-    
-    router.push(newPathName)
-  }
   return (
     <div className='w-fit'>
-      <Listbox value={selected} onChange={(e) => {setSelected(e); handleUpdateParams(e)}}>
+      <Listbox value={selected} onChange={(e) => { setSelected(e); setFilter(e.value) }}>
         <div className="relative w-full z-10">
           <Listbox.Button className="custom-filter__btn">
             <span className='block truncate'>{selected.title}</span>
@@ -36,7 +28,7 @@ const CustomFilter = ({ title, options }: CustomFilterprops) => {
             leaveFrom='opacity-100'
             leaveTo='opacity-0'>
             <Listbox.Options
-              className="custom-filter__option">
+              className="custom-filter__options">
               {options.map((option) => (
                 <Listbox.Option
                   key={option.title}

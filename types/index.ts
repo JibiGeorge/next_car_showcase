@@ -5,14 +5,14 @@ export interface CustomButtonProps {
   containerStyles?: string;
   handleClick?: MouseEventHandler<HTMLButtonElement>;
   btnType?: "button" | "submit";
-  textStyles?:  string;
-  rightIcon?:  string;
-  isDisabled?: boolean
+  textStyles?: string;
+  rightIcon?: string;
+  isDisabled?: boolean;
 }
 
 export interface SearchManufacturerProps {
-  manufacturer: string;
-  setManufacturer: (manufacturer: string) => void;
+  selected: string;
+  setSelected: (manufacturer: string) => void;
 }
 
 export interface CardProps {
@@ -31,7 +31,7 @@ export interface CardProps {
 }
 
 export interface FilterProps {
-  manufacturer: string,
+  manufacturer: string;
   year: number;
   fuel: string;
   limit: number;
@@ -45,10 +45,17 @@ export interface OptionProps {
 
 export interface CustomFilterprops {
   title: string;
-  options: OptionProps[]
+  options: OptionProps[];
+  setFilter: (value: any) => void;
 }
 
 export interface ShowMoreProps {
   pageNumber: number;
   isNext: boolean;
+  setLimit: (limit: number) => void;
+}
+
+export interface SearchBarProps {
+  setModel: (model: string) => void;
+  setManufacturer: (manufacturer: string) => void;
 }
