@@ -1,6 +1,6 @@
 // const axios = require('axios');
 
-import { CardProps } from "@/types";
+import { CardProps, FilterProps } from "@/types";
 
 // const options = {
 //   method: 'GET',
@@ -19,13 +19,14 @@ import { CardProps } from "@/types";
 // 	console.error(error);
 // }
 
-export const fetchCars = async ()=>{
+export const fetchCars = async (filters: FilterProps)=>{
+    const {manufacturer, year, model, limit, fuel} = filters;
     const headers = {
         'X-RapidAPI-Key': '5cb21b8056msh82d056f40c4cccep1cf9a0jsnb35390be84b2',
     'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
     }
 
-    const response = await fetch('https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=q3',{
+    const response = await fetch(`https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`,{
         headers: headers
     })
 
