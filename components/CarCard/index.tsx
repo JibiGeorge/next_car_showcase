@@ -1,7 +1,7 @@
 "use client"
 
 import { CardProps } from '@/types'
-import { calculateCarRent } from '@/utils'
+import { calculateCarRent, generateCarImage } from '@/utils'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { CardDetails, CustomButton } from '../Index'
@@ -34,7 +34,7 @@ const CarCard = ({ car }: CarCardProps) => {
                 </span>
             </p>
             <div className='relative w-full h-40 my-3 object-contain'>
-                <Image src='/hero.png' alt='car' fill priority className='object-contain' />
+                <Image src={generateCarImage(car)} alt='car' fill priority className='object-contain' />
             </div>
 
             <div className="relative flex w-full mt-2">
